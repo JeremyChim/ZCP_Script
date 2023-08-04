@@ -8,16 +8,20 @@
 import openpyxl as op
 
 def ret_cell_val(file,
-            x:int,
-            y:int):
+                 sheet:int,
+                 x:int,
+                 y:int):
     '''
-    :param file: 读取的表格
+    :param file: 文件的路径
+    :param sheet: 表格的sheet号
     :param x: 单元格行数
     :param y: 单元格列数
     :return: 单元格的值
     '''
     wb = op.load_workbook(file)
-    ws = wb.worksheets[0]
+    sheet -= 1
+    ws = wb.worksheets[sheet]
+
     a = ws.cell(x, y).value
     return a
 
@@ -30,6 +34,7 @@ if __name__ == '__main__':
     x = 2
     y = 2
     a = ret_cell_val(file=file,
+                     sheet=1,
                      x=x,
                      y=y)
 

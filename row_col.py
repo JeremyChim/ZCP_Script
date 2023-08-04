@@ -7,7 +7,8 @@
 
 import openpyxl as op
 
-def ret_row_col(file, sheet:int):
+def ret_row_col(file,
+                sheet:int):
     '''
     :param file: 文件的路径
     :param sheet: 表格的sheet号
@@ -15,8 +16,9 @@ def ret_row_col(file, sheet:int):
     '''
 
     wb = op.load_workbook(file)
-    sheet = sheet - 1
+    sheet -= 1
     ws = wb.worksheets[sheet]
+
     row = ws.max_row
     col = ws.max_column
     # print('工作表列数：',ws.max_column)
